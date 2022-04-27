@@ -1,9 +1,9 @@
 ##인터넷 프로토콜 스택의 4계층
 
-애플리케이션 - HTTP, FTP (SOCKET 라이브러리)
-전송계층 - TCP, UDP
-인터넷 계층 - IP
-네트워크 인터페이스 계층 (LAN 드라이버, LAN 장비)
+• 애플리케이션 - HTTP, FTP (SOCKET 라이브러리)
+• 전송계층 - TCP, UDP
+• 인터넷 계층 - IP
+• 네트워크 인터페이스 계층 (LAN 드라이버, LAN 장비)
 
 1. 프로그램이 Hello, world! 메시지 생성
 2. SOCKET 라이브러리를 통해 전달
