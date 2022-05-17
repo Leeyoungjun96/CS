@@ -58,3 +58,69 @@
         • 4. */*
         • 5. text/html;level=2
 
+• 단순 전송 (Content-Length) : 콘텐트의 길이를 알 수 있게 해줌, 한번에 요청하고 한번에 받음
+
+• 압축 전송 (Content-Encoding) : 단순 전송을 압축하여 넘겨줌(Content-Encoding 을 보내줘서 어떤걸로 압축했는지 알려줌)
+
+• 분할 전송 (Transfer-Encoding) : 용량이 큰것을 분할하여 오는데로 바로바로 띄울때 사용(Content-Length를 예상하지 못하기 때문에 사용하지 않음)
+
+• 범위 전송 (Range, Content-Range) : 범위를 지정해서 요청(절반 받았을때 다시 처음부터 받기 힘드니 일부러 2개로 나눔)
+
+• From : 유저 에이전트의 이메일 정보
+
+• Referer : 이전 웹 페이지 주소
+    • A -> B로 이동하는 경우 B를 요청할 때 Referer: A를 포함해서 요청
+    • Referer를 사용해서 유입 경로 분석 가능
+    • 요청에서 사용
+• User-Agent : 유저 에이전트 애플리케이션 정보
+    • 클라이언트의 애플리케이션 정보(웹 브라우저 정보, 등등)
+    • 통계 정보
+    • 어떤 종류의 브라우저에서 장애가 발생하는지 파악 가능
+    • 요청에서 사용
+• Server : 요청을 처리하는 ORIGIN 서버의 소프트웨어 정보
+    • Server : Apache/2.2.22 (Debian)
+    • server : nginx
+    • 응답에서 사용
+• Date : 메시지가 발생한 날짜와 시간
+    • 응답에서 사용
+
+★ Host : 요청한 호스트 정보(도메인)
+    • 요청에서 사용
+    • 하나의 서버가 여러 도메인을 처리해야 할 때
+    • 하나의 IP 주소에 여러 도메인이 적용되어 있을 때
+
+• Location : 페이지 리다이렉션
+    • 웹 브라우저는 3XX 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동(리다이렉트)
+    • 응답코드 3XX에서 설명
+    • 201 (Created) : Location 값은 요청에 의해 생성된 리소스 URI
+    • 3XX (Redirection) : Location 값은 요청을 자동으로 리다이렉션하기 위한 대상 리소스를 가르킴
+
+• Allow : 허용 가능한 HTTP 메서드
+    • 405 (Method Not Allowed)에서 응답에 포함해야함
+    • Allow : Get, Head, Put
+lable) : 서비스가 언제까지 불능인지 알려줄 수 있음
+    • Retry-After : Fri, 31 Dec 1999 23:59:59 GMT(날짜 표기)
+    • Retry-After : 120 (초단위 표기)
+
+• 인증 header
+    • Authorization : 클라이언트 인증 정보를 서버에 전달
+    • WWW-Authenticate : 리소스 접근시 필요한 인증 방법 정의
+        • 401 Unauthorize
+• Retry-After : 유저 에이전트가 다음 요청을 하기까지 기다려야 하는 시간
+    • 503 (Service Unavaid 응답과 함께 사용
+
+• 쿠키
+    • Set-Cookie : 서버에서 클라이언트로 쿠키 전달(응답)
+    • Cookie : 클라이언트가 서버에서 받은 쿠키를 저장하고, HTTP 요청시 서버로 전달
+
+    • 쿠키 미사용 : 처음 welcome 페이지 접근
+        • Stateless
+            • http는 무상태 프로토콜이다
+            • 클라이언트와 서버가 요청과 응답을 주고 받으면 연결이 끊어진다.
+            • 클라이언트가 다시 요청하면 서버는 이전 요청을 기억하지 못한다.
+            • 클라이언트와 서버는 서로 상태를 유지하지 않는다.
+
+    • 모든 요청에 정보를 넘기는 문제
+        • 모든 요청에 사용자 정보가 포함되도록 개발
+        • 브라우저를 완전히 종료하고 열면?
+        
