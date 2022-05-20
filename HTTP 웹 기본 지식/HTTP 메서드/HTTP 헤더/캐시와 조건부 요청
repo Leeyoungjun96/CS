@@ -115,7 +115,7 @@
             • 데이터는 캐시해도 되지만, 항상 원(origin) 서버에 검증하고 사용
         • Cache-Control : no-store
             • 데이터에 민감한 정보가 있으므로 저장하면 안됨
-            (메모리에서 사용하고 최대한 빨리 삭제)
+              (메모리에서 사용하고 최대한 빨리 삭제)
 
     • Pragma : 캐시 제어(하위 호환)
         • Pragma : no-cache
@@ -132,7 +132,7 @@
     • 원 서버 직접 접근 : orgin 서버 (시간이 오래걸릴 수 있음)
     • 프록시 캐시 도입 : 원서버가 아닌 한국에 프록시 캐시 서버를 등록
         • 첫번째 요청
-            private 캐시, public 캐시
+            private 캐시(클라이언트), public 캐시(프록시 서버)
 
     • Cache-Control : 캐시 지시어(directives) - 기타
         • Cache-Control : public
