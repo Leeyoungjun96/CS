@@ -14,7 +14,7 @@
         멀티 프로그래밍 ex) CPU 활용도를 최대한 높혀서, 프로세스를 빨리 실행
 
 • FIFO 스케쥴러
-    • 프로세스가 저장매체를 읽는 다든지, 프린팅을 한다든지 하는 작업 없이, CPU를 처음부터 끝까지 쭉 사용
+    • 프로세스가 저장매체를 읽는다든지, 프린팅을 한다든지 하는 작업 없이, CPU를 처음부터 끝까지 쭉 사용
     • 가장 간단한 스케쥴러 ( 배치 처리 시스템 )
     • FCFS ( First Come First Served ) 스케쥴러
     • 준비 큐 -> 프로세서(CPU) -> 완료
@@ -39,3 +39,22 @@
     • 매번 현재 실행중인 프로세스를 ready queue에 보내고 가장 오랫동안 대기하고 있는 프로세스를 선택
     • ex) Process    ->     CPU
          3 3 2 2 2 1 ->  1 2 3 2 3 2
+
+## 멀티 프로그래밍과 Wait
+• 멀티 프로그래밍 : CPU 활용도를 극대화 하는 스케쥴링 알고리즘
+• Wait : 간단히 저장매체로부터 파일 읽기를 기다리는 시간으로 가정
+
+• 프로세스 상태
+    • 프로세스 생성 (new) -> 실행가능(run) <-> 실행중(running) -> 종료(exit)
+                                <- 대기(blocked) <-
+    • running state : 현재 CPU에서 실행 상태
+    • ready state   : CPU에서 실행 가능 상태(실행 대기 상태)
+    • block state   : 특정 이벤트 발생 대기 상태(ex: 프린팅이 다 되었다!)
+
+    • Running -(1)-> Block -(4)-> Ready
+      Ready -(2)-> Running -(3)-> Ready
+      (1) process block for input
+      (2) scheduler picks another process
+      (3) scheduler picks this process
+      (4) process becomes available
+
