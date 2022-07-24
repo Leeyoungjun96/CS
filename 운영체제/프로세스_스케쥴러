@@ -22,3 +22,20 @@
 • 최단 작업 우선(SJF) 스케쥴러
     • SJF(Shortest Job First) 스케쥴러
     • 가장 프로세스 실행시간이 짧은 프로세스부터 먼저 실행을 시키는 알고리즘
+
+• RealTime OS(RTOS) : 응용 프로그램 실시간 성능 보장을 목표로 하는 OS
+    • 정확하게 프로그램 시작, 완료 시간을 보장
+    • Hardware RTOS, Software RTOS
+• General Purpose OS(GPOS)
+    • 프로세스 실행시간에 민감하지 않고, 일반적인 목적으로 사용되는 OS ex) Windows, Linux
+
+• 우선순위 기반 스케쥴러 ( Priority-Based )
+    • 정적 우선순위
+        • 프로세스마다 우선순위를 미리 지정
+    • 동적 우선순위
+        • 스케쥴러가 상황에 따라 우선순위를 동적으로 변경
+
+• Round Robin 스케쥴러
+    • 매번 현재 실행중인 프로세스를 ready queue에 보내고 가장 오랫동안 대기하고 있는 프로세스를 선택
+    • ex) Process    ->     CPU
+         3 3 2 2 2 1 ->  1 2 3 2 3 2
