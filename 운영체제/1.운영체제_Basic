@@ -1,5 +1,13 @@
 #### 운영체제 역할
 
+• CPU 기본구조
+CPU : PC, SP, MAR, IR, MBR, I/O AR. I/O BR, Execution unit
+      PC = Program counter, SP = Stack pointer, IR = Instruction register, MAR = Memory address register
+      MBR = Memory buffer register, I/O AR = Input/output address register, I/O BR = Input/output buffer register
+      보통 PC와 SP만 알면됨
+
+CPU <-(SystemBus)-> Main memory <-(System bus)-> I/O module
+
 • 운영체제 역할 1 : 시스템 자원(System Resource)관리자
     • Operating System(OS)
     • 시스템 자원(System Resource) = 컴퓨터 하드웨어
