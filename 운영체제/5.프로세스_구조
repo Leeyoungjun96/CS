@@ -1,0 +1,31 @@
+## 프로세스와 컨텍스트 스위칭 : 프로세스 구조 deep dive
+• 프로세스는 일반적으로 어떻게 구성되어 있나
+    • text(CODE) : 코드
+    • data : 변수/초기화된 데이터
+    • stack : 임시 데이터(함수 호츨, 로컬 변수등)
+    • heap : 코드에서 동적으로 만들어지는 데이터
+    • ex) void meaningless ( int data )     0000h           STACK return address: 0006h // PC값을 0006h로 바꾼뒤 없앰
+          {                                                       argc
+               int temp                     0001h                 argv
+               temp = data;                 0002h                 return address: 0005h // PC를 0005h로 바꾼뒤 없앰
+          } // 여기까지 선언                                         data = 1
+          int main(int argc, char **argv)   0003h                 temp = 1 // 끝나면 여기서부터 없앰
+          {
+                meangingless (1);           0004h
+                return 0;                   0005h  PC=0005h
+          }
+                                            0006h  PC=0006h
+    • PC(Program Counter) + SP(Stack Pointer)
+      ex) def func (a, b)                  0000h          Stack   1000h        (0003h일때)  1000h
+              return a + b                 0001h                  0FFFh                    ret = 0004h (return address)
+          c = 0                            0002h                  0FFEh                    a=1
+          c = func(1, 2)        func()     0003h                  0FFDh                    b=2
+                                c=func()   0004h                  0FFCh                  (이후에 지역변수)
+          print (c)                        0005h
+
+          DATA    C = 0
+          Context Program Counter 0000h -> 0001h -> 0002h -> 0003h                          -> 0004h -> 0005h
+                  Stack Pointer   1000h                      0FFCh(스택포인터는 최상단을 가르킴)
+                  EAX                                        3(반환값)                          3(c에게 줄 값)
+                  EBP             1000h                      0FFCh
+   ( EBP는 함수를 여러개 실행하였을 때, 오류가 발생시 현재 스택포인터를 적어둠(빠른 트랙킹을 위해 적어둠) )
